@@ -3,7 +3,7 @@ const express = require('express')
 const app = express();
 const server = require('http').createServer(app)
 app.use(express.static(__dirname+'/client'))
-
+let port = process.env.PORT || 7575
 const io = require('socket.io')(server)
 
 io.on('connection',(socket)=>{
@@ -19,6 +19,6 @@ io.on('connection',(socket)=>{
     })
 })
 
-server.listen(7575,()=>{
-    console.log("http://localhost:7575")
+server.listen(port,()=>{
+    console.log("http://localhost:",port)
 })
